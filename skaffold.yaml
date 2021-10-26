@@ -1,4 +1,4 @@
-apiVersion: skaffold/v2alpha3
+apiVersion: skaffold/v2beta24 
 kind: Config
 deploy: 
   kubectl:
@@ -26,3 +26,35 @@ build:
         manual:
           - src: "**/*.js"
             dest: .         
+    - image: rodolight/tickets
+      context: tickets
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "src/**/*.ts"
+            dest: . 
+    - image: rodolight/orders
+      context: orders
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "src/**/*.ts"
+            dest: .      
+    - image: rodolight/expiration
+      context: expiration
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "src/**/*.ts"
+            dest: .      
+    - image: rodolight/payments
+      context: payments
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "src/**/*.ts"
+            dest: .      

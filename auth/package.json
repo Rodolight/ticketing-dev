@@ -18,7 +18,8 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "@rdpticketsv/common": "^1.0.11",
+        "@rdpticketsv/common": "^1.0.13",
+        "@types/mongoose": "^5.11.97",
         "express-async-errors": "^3.1.1",
         "mogoose": "^0.0.1-security",
         "ts-node-dev": "^1.1.8",
@@ -26,7 +27,6 @@
     },
     "devDependencies": {
         "@types/jest": "^27.0.1",
-        "@types/mongoose": "^5.11.97",
         "@types/supertest": "^2.0.11",
         "jest": "^27.1.0",
         "mongodb-memory-server": "^7.4.0",
