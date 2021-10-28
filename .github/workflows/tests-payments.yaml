@@ -8,4 +8,4 @@ jobs:
     runs-on: ubuntu-latest
     steps: 
       - uses: actions/checkout@v2
-      - run: cd payments && npm install && npm install dotenv && npm run test:ci
+      - run: cd payments && npm install && npm install dotenv npm install mongoose && npm run test:ci
