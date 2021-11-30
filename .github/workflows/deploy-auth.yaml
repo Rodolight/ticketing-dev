@@ -10,6 +10,9 @@ on:
       
     paths:
       - 'auth/**'
+defaults:
+  run:
+    shell: bash
 jobs:
   build:
     runs-on: ubuntu-latest
