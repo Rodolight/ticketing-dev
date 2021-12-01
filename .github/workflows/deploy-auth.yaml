@@ -10,17 +10,15 @@ on:
       
     paths:
       - 'auth/**'
-defaults:
-  run:
-    shell: bash
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+    - shell: bash
     - uses: actions/checkout@v2
     - run: cd auth && docker build -t rodolight/auth .
-    - run: docker login -u rodolight -p Ninguna65
       env: 
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}   
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+    - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
     - run: docker push rodolight/auth
