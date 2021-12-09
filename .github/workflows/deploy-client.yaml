@@ -1,4 +1,4 @@
-name: deploy-clients
+name: deploy-client
 
 on:
   workflow_dispatch: # Putting here is also fine!!
@@ -6,21 +6,21 @@ on:
     branches: 
       - master 
     paths:
-      - 'clients/**'
+      - 'client/**'
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: cd clients && docker build -t rodolight/clients .
+      - run: cd client && docker build -t rodolight/client .
       - run: 
           echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
         env:
           $DOCKER_USERNAME: "${{ secrets.DOCKER_USERNAME }}"
           $DOCKER_PASSWORD: "${{ secrets.DOCKER_PASSWORD }}"
-      - run: docker push rodolight/clients
+      - run: docker push rodolight/client
       - uses: digitalocean/action-doctl@v2
         with:
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
       - run: doctl kubernetes cluster kubeconfig save ticketing
-      - run: kubectl rollout restart deployment  clients-depl
+      - run: kubectl rollout restart deployment  client-depl
